@@ -71,7 +71,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameItemTableViewCell" rowHeight="107" id="YWs-1U-edz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameItemTableViewCell" rowHeight="107" id="YWs-1U-edz" customClass="GameItemTableViewCell" customModule="iOSCarePlus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YWs-1U-edz" id="2f1-7P-9py">
@@ -120,6 +120,12 @@
                                                 <constraint firstItem="Ez2-Jk-jAN" firstAttribute="top" secondItem="3oH-6C-zSr" secondAttribute="bottom" id="rNC-KX-Kpa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="gameCurrentPriceLabel" destination="ezq-Oc-guH" id="dWh-Da-rGk"/>
+                                            <outlet property="gameImageView" destination="P2W-sg-NQE" id="2Ak-Nb-l9b"/>
+                                            <outlet property="gameOriginPriceLabel" destination="ujM-Sz-R84" id="0Ei-4t-X6A"/>
+                                            <outlet property="gameTitleLabel" destination="3oH-6C-zSr" id="w2t-Dv-MfE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

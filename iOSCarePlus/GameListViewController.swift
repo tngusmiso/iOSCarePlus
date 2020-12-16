@@ -25,7 +25,8 @@ extension GameListViewController: UITableViewDataSource {
     
     // 해당 IndexPath(section, row)에 어떤 셀을 보여줄지!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "GameItemTableViewCell", for: indexPath)
+        let cell: GameItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: "GameItemTableViewCell", for: indexPath) as! GameItemTableViewCell
+//        cell.setModel(model: model)
         return cell
     }
 }
