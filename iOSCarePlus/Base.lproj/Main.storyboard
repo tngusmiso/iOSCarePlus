@@ -122,6 +122,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="06K-Eu-127" id="3co-HY-KyX"/>
+                                    <outlet property="delegate" destination="06K-Eu-127" id="E49-Cf-e43"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6XR-si-FTR"/>
