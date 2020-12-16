@@ -6,29 +6,41 @@
 //  Copyright © 2020 tngusmiso. All rights reserved.
 //
 
+import Kingfisher
 import UIKit
 
 class GameItemTableViewCell: UITableViewCell {
-    @IBOutlet weak var gameImageView: UIImageView!
-    @IBOutlet weak var gameTitleLabel: UILabel!
-    @IBOutlet weak var gameOriginPriceLabel: UILabel!
-    @IBOutlet weak var gameCurrentPriceLabel: UILabel!
+    @IBOutlet private weak var gameImageView: UIImageView!
+    @IBOutlet private weak var gameTitleLabel: UILabel!
+    @IBOutlet private weak var gameOriginPriceLabel: UILabel!
+    @IBOutlet private weak var gameCurrentPriceLabel: UILabel!
     
-    private var model: GameItemModel?
+    private var model: GameItemModel? {
+        didSet {
+            setUIFromModel()
+        }
+    }
     
-    func setModel(model: GameItemModel){
+    func setModel(model: GameItemModel) {
         self.model = model
     }
     
     func setUIFromModel() {
         guard let model = model else { return }
         
-        self.gameTitleLabel.text = model.gameTitle
+        let imageURL = URL(string: model.imageURL)
+        gameImageView.kf.setImage(with: imageURL)
+        gameImageView.layer.cornerRadius = 9
+        gameImageView.layer.borderWidth = 1
+        gameImageView.layer.borderColor = UIColor(red: 236 / 255, green: 236 / 255, blue: 236 / 255, alpha: 1).cgColor
         
-        if let gameDiscountPrice = model.gameDiscountPrice {
+        self.gameTitleLabel.text = model.gameTitle
+        if let gameDiscountPrice: Int = model.gameDiscountPrice {
+            self.gameOriginPriceLabel.isHidden = false
             self.gameOriginPriceLabel.text = "\(model.gameOriginPrice)"
             self.gameCurrentPriceLabel.text = "\(gameDiscountPrice)"
         } else {
+            self.gameOriginPriceLabel.isHidden = true
             self.gameCurrentPriceLabel.text = "\(model.gameOriginPrice)"
         }
     }

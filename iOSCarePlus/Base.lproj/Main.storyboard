@@ -144,6 +144,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="4jM-Fk-5gB"/>
+                    <connections>
+                        <outlet property="tableView" destination="Tft-Yx-ClG" id="eGq-IY-z4t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLZ-00-Df9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
