@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     }
     
     private func apperLogoAnimation(completion: @escaping () -> Void) {
-        let animationClouser = {[weak self] in
+        let animationClouser: () -> Void = { [weak self] in
             self?.logoViewTopConstraint.constant = 17
             self?.view.layoutIfNeeded() // 제약조건을 업데이트 했으니 화면도 업데이트 하라는 코드
         }

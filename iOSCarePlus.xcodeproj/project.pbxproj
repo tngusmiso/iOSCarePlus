@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A5AA03E258A1F6F00EF914A /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AA03D258A1F6F00EF914A /* GameListViewController.swift */; };
 		3AE7E737257A7E990010160A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7E736257A7E990010160A /* AppDelegate.swift */; };
 		3AE7E739257A7E990010160A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7E738257A7E990010160A /* SceneDelegate.swift */; };
 		3AE7E73B257A7E990010160A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7E73A257A7E990010160A /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A5AA03D258A1F6F00EF914A /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		3AE7E733257A7E990010160A /* iOSCarePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCarePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE7E736257A7E990010160A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE7E738257A7E990010160A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				3AE7E73F257A7E9C0010160A /* Assets.xcassets */,
 				3AE7E741257A7E9C0010160A /* LaunchScreen.storyboard */,
 				3AE7E744257A7E9C0010160A /* Info.plist */,
+				3A5AA03D258A1F6F00EF914A /* GameListViewController.swift */,
 			);
 			path = iOSCarePlus;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A5AA03E258A1F6F00EF914A /* GameListViewController.swift in Sources */,
 				3AE7E73B257A7E990010160A /* ViewController.swift in Sources */,
 				3AE7E737257A7E990010160A /* AppDelegate.swift in Sources */,
 				3AE7E739257A7E990010160A /* SceneDelegate.swift in Sources */,
