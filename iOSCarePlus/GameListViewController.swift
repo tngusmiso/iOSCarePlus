@@ -27,10 +27,10 @@ class GameListViewController: UIViewController {
         AF.request(newGameListURL).responseJSON { [weak self] response in
             // 통신 결과 response를 여기서 작업
             guard let data = response.data else { return }
-    
+            
+            // response 안에 들어있는 data 디코딩
             let decoder: JSONDecoder = JSONDecoder()
-            let model = try? decoder.decode(NewGameResponse.self, from: data)
-            self?.model = model
+            self?.model = try? decoder.decode(NewGameResponse.self, from: data)
         }
     }
 }

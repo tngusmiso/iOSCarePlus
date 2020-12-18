@@ -28,7 +28,7 @@ class GameItemTableViewCell: UITableViewCell {
     func setUIFromModel() {
         guard let model = model else { return }
         
-        let imageURL = URL(string: model.imageURL)
+        let imageURL: URL? = URL(string: model.imageURL)
         gameImageView.kf.setImage(with: imageURL)
         gameImageView.layer.cornerRadius = 9
         gameImageView.layer.borderWidth = 1

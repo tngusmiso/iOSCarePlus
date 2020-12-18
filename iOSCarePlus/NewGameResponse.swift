@@ -8,17 +8,6 @@
 
 import Foundation
 
-//JSON -> Swift Object : Decodable
-//Swift Object -> JSON : Encodable
-//Decodable & Encodable : Codable
-
-struct NewGameResponse: Decodable {
-    let contents: [NewGameContents]
-    let length: Int
-    let offset: Int
-    let total: Int
-}
-
 struct NewGameContents: Decodable {
     let formalName: String
     let heroBannerURL: String
@@ -27,4 +16,11 @@ struct NewGameContents: Decodable {
         case formalName = "formal_name"
         case heroBannerURL = "hero_banner_url"
     }
+}
+
+struct NewGameResponse: Decodable {
+    let contents: [NewGameContents]
+    let length: Int
+    let offset: Int
+    let total: Int
 }
