@@ -47,10 +47,15 @@ extension GameListViewController: UITableViewDataSource {
     // 해당 IndexPath(section, row)에 어떤 셀을 보여줄지!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let content = model?.contents[indexPath.row] else { return UITableViewCell() }
-        let cell: GameItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: "GameItemTableViewCell", for: indexPath) as! GameItemTableViewCell
-        let model: GameItemModel = GameItemModel(gameTitle: content.formalName, gameOriginPrice: 1_000, gameDiscountPrice: nil, imageURL: content.heroBannerURL)
+        let screenshotURLs: [String] = content.screenshots.reduce(into: []) { $0.append(contentsOf: $1.images.map { $0.url }) }
         
-        cell.setModel(model: model)        
+        let cell: GameItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: "GameItemTableViewCell", for: indexPath) as! GameItemTableViewCell
+        let model: GameItemModel = GameItemModel(gameTitle: content.formalName,
+                                                 gameOriginPrice: 10_000,
+                                                 gameDiscountPrice: nil,
+                                                 imageURL: content.heroBannerURL,
+                                                 screenshotURLs: screenshotURLs)
+        cell.setModel(model: model)
         return cell
     }
 }
