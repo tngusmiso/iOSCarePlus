@@ -1,0 +1,6 @@
+module Pods_iOSCarePlus {
+  umbrella header "Pods-iOSCarePlus-umbrella.h"
+
+  export *
+  module * { export * }
+}
