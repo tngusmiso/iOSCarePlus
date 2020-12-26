@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3QA-0K-A0z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3QA-0K-A0z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -125,6 +125,27 @@
                                             <outlet property="gameImageView" destination="P2W-sg-NQE" id="2Ak-Nb-l9b"/>
                                             <outlet property="gameOriginPriceLabel" destination="ujM-Sz-R84" id="0Ei-4t-X6A"/>
                                             <outlet property="gameTitleLabel" destination="3oH-6C-zSr" id="w2t-Dv-MfE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IndicatorCell" id="Nhs-3W-Jy7" customClass="IndicatorCell" customModule="iOSCarePlus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="135" width="414" height="60.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nhs-3W-Jy7" id="QLM-uq-6gL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="y4d-gB-PjG">
+                                                    <rect key="frame" x="197" y="20" width="20" height="20.5"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="y4d-gB-PjG" firstAttribute="centerX" secondItem="QLM-uq-6gL" secondAttribute="centerX" id="DAA-ye-Tqo"/>
+                                                <constraint firstItem="y4d-gB-PjG" firstAttribute="top" secondItem="QLM-uq-6gL" secondAttribute="top" constant="20" id="lf2-rQ-Yj5"/>
+                                                <constraint firstAttribute="bottom" secondItem="y4d-gB-PjG" secondAttribute="bottom" constant="20" id="ovT-dF-2vH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="indicator" destination="y4d-gB-PjG" id="lXs-Lu-68C"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

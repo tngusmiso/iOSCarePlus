@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A5A000C259372EB00712F55 /* IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A000B259372EB00712F55 /* IndicatorCell.swift */; };
 		3A5AA03E258A1F6F00EF914A /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AA03D258A1F6F00EF914A /* GameListViewController.swift */; };
 		3A5AA041258A23C400EF914A /* GameItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AA040258A23C400EF914A /* GameItemModel.swift */; };
 		3A5AA044258A248700EF914A /* GameItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AA043258A248700EF914A /* GameItemTableViewCell.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A5A000B259372EB00712F55 /* IndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorCell.swift; sourceTree = "<group>"; };
 		3A5AA03D258A1F6F00EF914A /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		3A5AA040258A23C400EF914A /* GameItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemModel.swift; sourceTree = "<group>"; };
 		3A5AA043258A248700EF914A /* GameItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				3A5AA043258A248700EF914A /* GameItemTableViewCell.swift */,
 				3A5AFFFE25935D4800712F55 /* GameItemCodeTableViewCell.swift */,
+				3A5A000B259372EB00712F55 /* IndicatorCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A5AA044258A248700EF914A /* GameItemTableViewCell.swift in Sources */,
+				3A5A000C259372EB00712F55 /* IndicatorCell.swift in Sources */,
 				3A5AFFFF25935D4800712F55 /* GameItemCodeTableViewCell.swift in Sources */,
 				3A5AA03E258A1F6F00EF914A /* GameListViewController.swift in Sources */,
 				3A5AA04B258A2EA200EF914A /* NewGameResponse.swift in Sources */,

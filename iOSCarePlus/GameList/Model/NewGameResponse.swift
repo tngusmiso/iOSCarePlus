@@ -29,7 +29,7 @@ struct NewGameContents: Decodable {
 }
 
 struct NewGameResponse: Decodable {
-    let contents: [NewGameContents]
+    var contents: [NewGameContents]
     let length: Int
     let offset: Int
     let total: Int
