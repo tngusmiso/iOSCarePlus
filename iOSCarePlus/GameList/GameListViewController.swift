@@ -15,7 +15,7 @@ class GameListViewController: UIViewController {
     }
     private let newCount: Int = 10
     private var newOffset: Int = 0
-    private var isEnd: Bool = false
+    private var isEndOfData: Bool = false
     private var model: NewGameResponse? {
         didSet {
             tableView.reloadData()
@@ -35,35 +35,42 @@ class GameListViewController: UIViewController {
     private func callNewGameListAPI() {
         // get, parameter 등이 없는 채로 통신 요청
         AF.request(newGameListURL).responseJSON { [weak self] response in
-            // 통신 결과 response를 여기서 작업
             guard let data = response.data else { return }
-            
-            // response 안에 들어있는 data 디코딩
             let decoder: JSONDecoder = JSONDecoder()
-            guard let model: NewGameResponse = try? decoder.decode(NewGameResponse.self, from: data) else {
+            guard let responseModel: NewGameResponse = try? decoder.decode(NewGameResponse.self, from: data) else {
                 return
             }
             
             if self?.model == nil {
-                self?.model = model
+                self?.model = responseModel
             } else {
-                if model.contents.isEmpty {
-                    self?.isEnd = true
+                if responseModel.contents.isEmpty {
+                    self?.isEndOfData = true
                 }
-                self?.model?.contents.append(contentsOf: model.contents)
+                self?.model?.contents.append(contentsOf: responseModel.contents)
             }
         }
     }
 }
 
+// MARK: - TableView Delegate
 extension GameListViewController: UITableViewDelegate {
 }
 
+// MARK: - TableView DataSource
 extension GameListViewController: UITableViewDataSource {
     // 한 섹션에 몇개의 열을 보여줄 것인지
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isEnd { return model?.contents.count ?? 0 }
-        return (model?.contents.count ?? 0) + 1
+        // 응답을 받기 전에
+        guard let model = model else {
+            return 0
+        }
+        // 더이상 데이터가 없을 때
+        if isEndOfData {
+            return model.contents.count
+        }
+        // 데이터가 남아있을 때
+        return model.contents.count + 1
     }
     
     // 해당 IndexPath의 Cell이 보여지기 직전에 호출됨
@@ -78,16 +85,26 @@ extension GameListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // let cell: GameItemCodeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "GameItemCodeTableViewCell", for: indexPath) as! GameItemCodeTableViewCell
         
-        // 마지막 셀일 때 인디케이터가 포함된 셀을 보여준다
+        // IndicatorCell을 보여주는 경우
         if isIndicatorCell(indexPath) {
-            guard let indicatorCell: IndicatorCell = tableView.dequeueReusableCell(withIdentifier: "IndicatorCell", for: indexPath) as? IndicatorCell else { return UITableViewCell() }
+            guard let indicatorCell: IndicatorCell = tableView.dequeueReusableCell(withIdentifier: "IndicatorCell", for: indexPath) as? IndicatorCell else {
+                return UITableViewCell()
+            }
             indicatorCell.animateIndicator()
             return indicatorCell
         }
         
+        // GameItemTableViewCell을 보여주는 경우
         guard let cell: GameItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: "GameItemTableViewCell", for: indexPath) as? GameItemTableViewCell,
-            let content = model?.contents[indexPath.row] else { return UITableViewCell() }
-        let screenshotURLs: [String] = content.screenshots.reduce(into: []) { $0.append(contentsOf: $1.images.map { $0.url }) }
+              let content = model?.contents[indexPath.row] else {
+            return UITableViewCell()
+        }
+        
+        let screenshotURLs: [String] = content.screenshots.reduce(into: []) {
+            $0.append(contentsOf: $1.images.map {
+                        $0.url
+            })
+        }
         let model: GameItemModel = GameItemModel(gameTitle: content.formalName,
                                                  gameOriginPrice: 10_000,
                                                  gameDiscountPrice: nil,
