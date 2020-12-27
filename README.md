@@ -17,7 +17,7 @@
 * **XCode Swift 프로젝트에서는?** => *DS_Store, XCode Patch 관련, Dependency Manager 관련 등*
 * `.gitignore` 파일을 추가하기 전에 commit을 했다면?
     ```
-    git rm -r —cached
+    git rm -r --cached [파일명]
     ```
 
 ### references
