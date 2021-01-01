@@ -117,3 +117,33 @@ sudo gem install cocoapods
 
 ### references
 * https://cocoapods.org/
+
+---
+
+## 🌸 Alamofire
+* **비연결 HTTP 기반의 네트워크 통신 라이브러리**
+* (Swift 자체 라이브러리 URLSession보다 사용법이 간단함)
+* SPM, Carthage 또는 CocoaPods을 이용하여 설치
+* `import Alamofire`
+
+### request
+* **AF.request(**_: method: parameters: encoder: headers: interceptor:**)**
+* 사용 예시
+    ```
+    AF.request(url).responseJSON { response in
+        guard let data: Data = response.data else { return }
+        let decoder: JSONDecoder = JSONDecoder()
+        
+        // 디코딩 및 데이터 처리
+        // ...
+    }
+    ```
+### http method 종류
+* .get
+* .post
+* .put
+* .delete 
+* 등...
+
+### references
+* https://github.com/Alamofire/Alamofire
