@@ -71,3 +71,49 @@
 
 ### references
 * https://swift.org/package-manager/
+
+---
+
+## 🌸 CocoaPods
+### 설치
+```
+sudo gem install cocoapods
+````
+
+### 사용 방법
+* `pod init`  
+    > Podfile이 생성된다.
+    ```
+    # Uncomment the next line to define a global platform for your project
+    # platform :ios, '9.0'
+    
+    target 'test' do
+        # Comment the next line if you don't want to use dynamic frameworks
+        use_frameworks!
+
+        # Pods for test
+
+    end
+
+    ```
+    > 생성된 `Podfile`에 원하는 라이브러리 의존성을 추가한다.
+
+    > line 2 : 플랫폼 버전 명시  
+    > line 4 : 'test' -> 타겟 이름으로 설정  
+    > line 5~9 : 라이브러리 의존성 추가
+
+* `pod install`
+    > 프로젝트에 `Podfile`에 적힌 라이브러리를 설치한다.
+
+    > pod 라이브러리 설치 이후부터는 `.xcodeproj` 파일이 아닌, `.workspace` 확장자 파일에서 작업해야 한다.
+* `pod update`
+    > pod 라이브러리가 한 번 설치된 이후에는 `podfile.lock` 파일이 생성된다.
+
+    > `pod update` 명령어는 이 `podfile.lock` 파일을 보고 라이브러리를 업데이트 한다.
+* `pod repo`
+    > 모든 프레임워크의 정보가 들어있다.
+    
+    > 최신버전 라이브러리일 경우, repo를 업데이트 하지 않으면 라이브러리를 못 받아오는 경우도 있다.
+
+### references
+* https://cocoapods.org/
