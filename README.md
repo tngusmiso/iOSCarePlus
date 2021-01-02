@@ -147,3 +147,21 @@ sudo gem install cocoapods
 
 ### references
 * https://github.com/Alamofire/Alamofire
+
+---
+
+## 🌸 Kingfisher
+* 이미지 캐싱 라이브러리
+
+### 이미지 캐싱이란?
+* 네트워크 통신 시 이미지를 가져오는 것은 빈번하고, 상대적으로 비용이 많이 든다.
+* 따라서 이미지를 한번 받아올 때 캐시 메모리에 저장해두면 자동으로 캐시에서 삭제되기 전까지는 빠르게 처리할 수 있게 된다.
+
+### 사용 방법
+```
+let url: URL? = URL(string: "https://example.com/image.png")
+imageView.kf.setImage(with: url)
+````
+
+### references
+https://github.com/onevcat/Kingfisher
