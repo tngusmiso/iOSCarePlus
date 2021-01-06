@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet private weak var logoViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var backgroundImageViewLeadingConstraint: NSLayoutConstraint!
     
+    @IBAction private func logoTapAction(_ sender: UITapGestureRecognizer) {
+        blinkLogoAnimation()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,7 +28,6 @@ class ViewController: UIViewController {
         animationSettingDefault()
         apperLogoAnimation {[weak self] in
             self?.slideBackgroundImageAnimation()
-            self?.blinkLogoAnimation()
         }
     }
     
@@ -36,22 +39,12 @@ class ViewController: UIViewController {
     }
     
     private func apperLogoAnimation(completion: @escaping () -> Void) {
-        let animationClouser: () -> Void = { [weak self] in
+        UIView.animate(withDuration: 0.7, delay: 1, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: []) { [weak self] in
             self?.logoViewTopConstraint.constant = 17
             self?.view.layoutIfNeeded() // 제약조건을 업데이트 했으니 화면도 업데이트 하라는 코드
-        }
-        
-        let after: (Bool) -> Void = { _ in
+        } completion: { _ in
             completion()
         }
-        
-        UIView.animate(withDuration: 0.7,
-                       delay: 1,
-                       usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 1,
-                       options: [],
-                       animations: animationClouser,
-                       completion: after)
     }
     
     private func slideBackgroundImageAnimation() {
@@ -62,7 +55,7 @@ class ViewController: UIViewController {
     }
     
     private func blinkLogoAnimation() {
-        UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse]) { [weak self] in
+        UIView.animate(withDuration: 1, delay: 0, options: [.autoreverse]) { [weak self] in
             self?.logoView.alpha = 0
         }
     }

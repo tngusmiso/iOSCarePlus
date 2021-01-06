@@ -19,8 +19,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBackground" translatesAutoresizingMaskIntoConstraints="NO" id="SnT-M8-uGP">
                                 <rect key="frame" x="0.0" y="0.0" width="2071" height="896"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7R1-be-iUs">
-                                <rect key="frame" x="25" y="-156" width="80" height="79.5"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7R1-be-iUs">
+                                <rect key="frame" x="25" y="-77" width="98" height="276"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nintendo Store" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csg-bb-qtt">
                                         <rect key="frame" x="9" y="23" width="62" height="33.5"/>
@@ -30,12 +30,16 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.8784313725490196" green="0.066666666666666666" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="csg-bb-qtt" firstAttribute="top" secondItem="7R1-be-iUs" secondAttribute="top" constant="23" id="Oks-ec-02P"/>
                                     <constraint firstItem="csg-bb-qtt" firstAttribute="leading" secondItem="7R1-be-iUs" secondAttribute="leading" constant="9" id="QFs-0i-hBD"/>
                                     <constraint firstAttribute="bottom" secondItem="csg-bb-qtt" secondAttribute="bottom" constant="23" id="RxQ-e2-bej"/>
                                     <constraint firstAttribute="trailing" secondItem="csg-bb-qtt" secondAttribute="trailing" constant="9" id="UGX-9a-Ikc"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="1c1-GX-2dD" appends="YES" id="B3Z-NT-Y9N"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -55,9 +59,35 @@
                         <outlet property="logoViewTopConstraint" destination="GRH-AR-PdF" id="LUQ-j5-2g9"/>
                     </connections>
                 </viewController>
+                <view contentMode="scaleToFill" id="SX7-Kf-IsN">
+                    <rect key="frame" x="0.0" y="0.0" width="98" height="276"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nintendo Store" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIP-7M-OUq">
+                            <rect key="frame" x="9" y="23" width="80" height="230"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="x8e-nS-c1W"/>
+                    <color key="backgroundColor" red="0.87843137250000003" green="0.066666666669999999" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="HIP-7M-OUq" firstAttribute="leading" secondItem="SX7-Kf-IsN" secondAttribute="leading" constant="9" id="Rcm-si-2N8"/>
+                        <constraint firstItem="HIP-7M-OUq" firstAttribute="top" secondItem="SX7-Kf-IsN" secondAttribute="top" constant="23" id="SVp-mG-2Fo"/>
+                        <constraint firstAttribute="trailing" secondItem="HIP-7M-OUq" secondAttribute="trailing" constant="9" id="rmE-U0-Dhg"/>
+                        <constraint firstAttribute="bottom" secondItem="HIP-7M-OUq" secondAttribute="bottom" constant="23" id="yJS-qM-qxm"/>
+                    </constraints>
+                </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1c1-GX-2dD">
+                    <connections>
+                        <action selector="logoTapAction:" destination="BYZ-38-t0r" id="I3p-uL-vKq"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1820" y="11"/>
+            <point key="canvasLocation" x="-1820.289855072464" y="10.714285714285714"/>
         </scene>
         <!--Game List View Controller-->
         <scene sceneID="p77-oe-KJs">
