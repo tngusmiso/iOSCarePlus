@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -133,20 +134,34 @@
                                                 <constraint firstAttribute="height" constant="157" id="OmN-XK-N1g"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9EG-0c-zut">
+                                        <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9EG-0c-zut" customClass="SelectableButton" customModule="iOSCarePlus" customModuleProvider="target">
                                             <rect key="frame" x="20" y="364" width="53" height="48"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                             <state key="normal" title="New">
-                                                <color key="titleColor" systemColor="labelColor"/>
+                                                <color key="titleColor" name="black"/>
                                             </state>
+                                            <connections>
+                                                <action selector="touchUpNewButton:" destination="06K-Eu-127" eventType="touchUpInside" id="8ez-Uc-JK8"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaE-y7-Oox">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaE-y7-Oox" customClass="SelectableButton" customModule="iOSCarePlus" customModuleProvider="target">
                                             <rect key="frame" x="89" y="367" width="51" height="42"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                             <state key="normal" title="Sale">
-                                                <color key="titleColor" systemColor="labelColor"/>
+                                                <color key="titleColor" name="veryLightPink"/>
                                             </state>
+                                            <connections>
+                                                <action selector="touchUpSaleButton:" destination="06K-Eu-127" eventType="touchUpInside" id="Nfj-29-F1Y"/>
+                                            </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16Z-a3-Woi">
+                                            <rect key="frame" x="16.5" y="416" width="60" height="2"/>
+                                            <color key="backgroundColor" name="black"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="9Hx-qr-ToX"/>
+                                                <constraint firstAttribute="height" constant="2" id="ox0-zs-NDP"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -159,8 +174,10 @@
                                         <constraint firstItem="MaE-y7-Oox" firstAttribute="leading" secondItem="9EG-0c-zut" secondAttribute="trailing" constant="16" id="Sde-ye-3Iw"/>
                                         <constraint firstItem="veX-9V-und" firstAttribute="leading" secondItem="yX5-LG-mET" secondAttribute="leading" id="Twh-2f-VW1"/>
                                         <constraint firstItem="9EG-0c-zut" firstAttribute="top" secondItem="07J-Oj-rX6" secondAttribute="bottom" constant="40" id="Zag-5l-PT7"/>
+                                        <constraint firstItem="16Z-a3-Woi" firstAttribute="centerX" secondItem="9EG-0c-zut" secondAttribute="centerX" id="f42-wy-gOK"/>
                                         <constraint firstItem="veX-9V-und" firstAttribute="trailing" secondItem="yX5-LG-mET" secondAttribute="trailing" id="gih-gS-XRs"/>
                                         <constraint firstAttribute="bottom" secondItem="9EG-0c-zut" secondAttribute="bottom" constant="20" id="haf-Ia-Mbw"/>
+                                        <constraint firstItem="16Z-a3-Woi" firstAttribute="top" secondItem="9EG-0c-zut" secondAttribute="bottom" constant="4" id="iZK-UO-6iC"/>
                                         <constraint firstItem="veX-9V-und" firstAttribute="top" secondItem="yX5-LG-mET" secondAttribute="bottom" constant="35" id="juH-tC-iA9"/>
                                         <constraint firstAttribute="trailing" secondItem="07J-Oj-rX6" secondAttribute="trailing" id="pUV-Xb-cda"/>
                                         <constraint firstItem="9EG-0c-zut" firstAttribute="leading" secondItem="veX-9V-und" secondAttribute="leading" id="xKm-AY-fie"/>
@@ -262,6 +279,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="gameIcon" id="4jM-Fk-5gB"/>
                     <connections>
+                        <outlet property="newButton" destination="9EG-0c-zut" id="qHO-3O-vdS"/>
+                        <outlet property="saleButton" destination="MaE-y7-Oox" id="9ii-rp-HCh"/>
+                        <outlet property="selectedLineConstraints" destination="f42-wy-gOK" id="zdN-9b-2re"/>
                         <outlet property="tableView" destination="Tft-Yx-ClG" id="eGq-IY-z4t"/>
                     </connections>
                 </viewController>
@@ -330,9 +350,12 @@
         <image name="homeBackground" width="2071" height="812"/>
         <image name="homeIcon" width="55" height="55"/>
         <image name="shopIcon" width="55" height="55"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="veryLightPink">
+            <color red="0.80800002813339233" green="0.80800002813339233" blue="0.80800002813339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

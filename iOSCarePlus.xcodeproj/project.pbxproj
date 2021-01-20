@@ -15,6 +15,8 @@
 		3A5AA048258A2B1F00EF914A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3A5AA047258A2B1F00EF914A /* Alamofire */; };
 		3A5AA04B258A2EA200EF914A /* NewGameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AA04A258A2EA200EF914A /* NewGameResponse.swift */; };
 		3A5AFFFF25935D4800712F55 /* GameItemCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AFFFE25935D4800712F55 /* GameItemCodeTableViewCell.swift */; };
+		3AC1E4CE25B8167F006415FC /* SelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1E4CD25B8167F006415FC /* SelectableButton.swift */; };
+		3AC1E4D125B81B77006415FC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC1E4D025B81B77006415FC /* Colors.xcassets */; };
 		3AE7E737257A7E990010160A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7E736257A7E990010160A /* AppDelegate.swift */; };
 		3AE7E739257A7E990010160A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7E738257A7E990010160A /* SceneDelegate.swift */; };
 		3AE7E73B257A7E990010160A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7E73A257A7E990010160A /* ViewController.swift */; };
@@ -32,6 +34,8 @@
 		3A5AA043258A248700EF914A /* GameItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemTableViewCell.swift; sourceTree = "<group>"; };
 		3A5AA04A258A2EA200EF914A /* NewGameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameResponse.swift; sourceTree = "<group>"; };
 		3A5AFFFE25935D4800712F55 /* GameItemCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemCodeTableViewCell.swift; sourceTree = "<group>"; };
+		3AC1E4CD25B8167F006415FC /* SelectableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButton.swift; sourceTree = "<group>"; };
+		3AC1E4D025B81B77006415FC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = iOSCarePlus/Colors.xcassets; sourceTree = SOURCE_ROOT; };
 		3AE7E733257A7E990010160A /* iOSCarePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCarePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE7E736257A7E990010160A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE7E738257A7E990010160A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 		3A5A000125935D9500712F55 /* GameList */ = {
 			isa = PBXGroup;
 			children = (
+				3AC1E4CD25B8167F006415FC /* SelectableButton.swift */,
 				3A5AA03D258A1F6F00EF914A /* GameListViewController.swift */,
 				3A5A000325935DF100712F55 /* Cell */,
 				3A5A000225935DEB00712F55 /* Model */,
@@ -116,6 +121,7 @@
 				3AE7E73F257A7E9C0010160A /* Assets.xcassets */,
 				3AE7E741257A7E9C0010160A /* LaunchScreen.storyboard */,
 				3AE7E744257A7E9C0010160A /* Info.plist */,
+				3AC1E4D025B81B77006415FC /* Colors.xcassets */,
 				3A5A000125935D9500712F55 /* GameList */,
 			);
 			path = iOSCarePlus;
@@ -204,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC1E4D125B81B77006415FC /* Colors.xcassets in Resources */,
 				3A19C29D25B803DE0009E0DC /* Navigation.storyboard in Resources */,
 				3AE7E743257A7E9C0010160A /* LaunchScreen.storyboard in Resources */,
 				3AE7E740257A7E9C0010160A /* Assets.xcassets in Resources */,
@@ -264,6 +271,7 @@
 				3A5AA044258A248700EF914A /* GameItemTableViewCell.swift in Sources */,
 				3A5A000C259372EB00712F55 /* IndicatorCell.swift in Sources */,
 				3A5AFFFF25935D4800712F55 /* GameItemCodeTableViewCell.swift in Sources */,
+				3AC1E4CE25B8167F006415FC /* SelectableButton.swift in Sources */,
 				3A5AA03E258A1F6F00EF914A /* GameListViewController.swift in Sources */,
 				3A5AA04B258A2EA200EF914A /* NewGameResponse.swift in Sources */,
 				3AE7E73B257A7E990010160A /* ViewController.swift in Sources */,

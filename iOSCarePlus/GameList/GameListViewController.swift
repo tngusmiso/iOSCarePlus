@@ -10,6 +10,31 @@ import UIKit
 
 class GameListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var newButton: SelectableButton!
+    @IBOutlet private weak var saleButton: SelectableButton!
+    @IBOutlet private weak var selectedLineConstraints: NSLayoutConstraint!
+    
+    @IBAction private func touchUpNewButton(_ sender: Any) {
+        newButton.isSelected = true
+        saleButton.isSelected = false
+        
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.selectedLineConstraints.constant = 0
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
+    @IBAction private func touchUpSaleButton(_ sender: Any) {
+        newButton.isSelected = false
+        saleButton.isSelected = true
+        
+        let constant: CGFloat = saleButton.center.x - newButton.center.x
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.selectedLineConstraints.constant = constant
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
     private var newGameListURL: String { // ComputedProperty - getter만 있고, 한줄로 표현 가능한 형태
         "https://ec.nintendo.com/api/KR/ko/search/new?count=\(newCount)&offset=\(newOffset)"
     }
