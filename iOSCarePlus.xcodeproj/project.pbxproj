@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A19C29D25B803DE0009E0DC /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A19C29C25B803DE0009E0DC /* Navigation.storyboard */; };
 		3A5A000C259372EB00712F55 /* IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A000B259372EB00712F55 /* IndicatorCell.swift */; };
 		3A5AA03E258A1F6F00EF914A /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AA03D258A1F6F00EF914A /* GameListViewController.swift */; };
 		3A5AA041258A23C400EF914A /* GameItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AA040258A23C400EF914A /* GameItemModel.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A19C29C25B803DE0009E0DC /* Navigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
 		3A5A000B259372EB00712F55 /* IndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorCell.swift; sourceTree = "<group>"; };
 		3A5AA03D258A1F6F00EF914A /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		3A5AA040258A23C400EF914A /* GameItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemModel.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				3AE7E738257A7E990010160A /* SceneDelegate.swift */,
 				3AE7E73A257A7E990010160A /* ViewController.swift */,
 				3AE7E73C257A7E990010160A /* Main.storyboard */,
+				3A19C29C25B803DE0009E0DC /* Navigation.storyboard */,
 				3AE7E73F257A7E9C0010160A /* Assets.xcassets */,
 				3AE7E741257A7E9C0010160A /* LaunchScreen.storyboard */,
 				3AE7E744257A7E9C0010160A /* Info.plist */,
@@ -201,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A19C29D25B803DE0009E0DC /* Navigation.storyboard in Resources */,
 				3AE7E743257A7E9C0010160A /* LaunchScreen.storyboard in Resources */,
 				3AE7E740257A7E9C0010160A /* Assets.xcassets in Resources */,
 				3AE7E73E257A7E990010160A /* Main.storyboard in Resources */,
