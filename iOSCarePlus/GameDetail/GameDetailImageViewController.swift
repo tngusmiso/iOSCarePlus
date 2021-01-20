@@ -6,12 +6,19 @@
 //  Copyright © 2021 tngusmiso. All rights reserved.
 //
 
+import Kingfisher
 import UIKit
 
 class GameDetailImageViewController: UIViewController {
+    @IBOutlet private weak var imageView: UIImageView!
+    
+    var url: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        guard let stringURL = url else { return }
+        let url: URL? = URL(string: stringURL)
+        imageView.kf.setImage(with: url)
     }
 }

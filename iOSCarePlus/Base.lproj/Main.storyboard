@@ -292,7 +292,7 @@
         <!--Game Detail Page View Controller-->
         <scene sceneID="1dl-2m-Ts5">
             <objects>
-                <pageViewController storyboardIdentifier="GameDetailPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="1Ud-Fg-cER" customClass="GameDetailPageViewController" customModule="iOSCarePlus" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="GameDetailPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1Ud-Fg-cER" customClass="GameDetailPageViewController" customModule="iOSCarePlus" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKL-Hh-Eol" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1200" y="659"/>
@@ -318,6 +318,9 @@
                             <constraint firstItem="QV5-ub-i0T" firstAttribute="top" secondItem="7E5-TX-jgK" secondAttribute="top" id="yHP-pw-acp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="QV5-ub-i0T" id="Thj-3d-rGu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcR-Te-swQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
