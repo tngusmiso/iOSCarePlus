@@ -17,6 +17,8 @@
 		3A5AFFFF25935D4800712F55 /* GameItemCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AFFFE25935D4800712F55 /* GameItemCodeTableViewCell.swift */; };
 		3AC1E4CE25B8167F006415FC /* SelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1E4CD25B8167F006415FC /* SelectableButton.swift */; };
 		3AC1E4D125B81B77006415FC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC1E4D025B81B77006415FC /* Colors.xcassets */; };
+		3AC1E4D625B83DF6006415FC /* GameDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1E4D525B83DF6006415FC /* GameDetailPageViewController.swift */; };
+		3AC1E4DB25B83ED0006415FC /* GameDetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1E4DA25B83ED0006415FC /* GameDetailImageViewController.swift */; };
 		3AE7E737257A7E990010160A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7E736257A7E990010160A /* AppDelegate.swift */; };
 		3AE7E739257A7E990010160A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7E738257A7E990010160A /* SceneDelegate.swift */; };
 		3AE7E73B257A7E990010160A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7E73A257A7E990010160A /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 		3A5AFFFE25935D4800712F55 /* GameItemCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemCodeTableViewCell.swift; sourceTree = "<group>"; };
 		3AC1E4CD25B8167F006415FC /* SelectableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButton.swift; sourceTree = "<group>"; };
 		3AC1E4D025B81B77006415FC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = iOSCarePlus/Colors.xcassets; sourceTree = SOURCE_ROOT; };
+		3AC1E4D525B83DF6006415FC /* GameDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailPageViewController.swift; sourceTree = "<group>"; };
+		3AC1E4DA25B83ED0006415FC /* GameDetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailImageViewController.swift; sourceTree = "<group>"; };
 		3AE7E733257A7E990010160A /* iOSCarePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCarePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE7E736257A7E990010160A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE7E738257A7E990010160A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3AC1E4D925B83EA7006415FC /* GameDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3AC1E4D525B83DF6006415FC /* GameDetailPageViewController.swift */,
+				3AC1E4DA25B83ED0006415FC /* GameDetailImageViewController.swift */,
+			);
+			path = GameDetail;
+			sourceTree = "<group>";
+		};
 		3AE7E72A257A7E990010160A = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +136,7 @@
 				3AE7E744257A7E9C0010160A /* Info.plist */,
 				3AC1E4D025B81B77006415FC /* Colors.xcassets */,
 				3A5A000125935D9500712F55 /* GameList */,
+				3AC1E4D925B83EA7006415FC /* GameDetail */,
 			);
 			path = iOSCarePlus;
 			sourceTree = "<group>";
@@ -268,6 +282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC1E4D625B83DF6006415FC /* GameDetailPageViewController.swift in Sources */,
+				3AC1E4DB25B83ED0006415FC /* GameDetailImageViewController.swift in Sources */,
 				3A5AA044258A248700EF914A /* GameItemTableViewCell.swift in Sources */,
 				3A5A000C259372EB00712F55 /* IndicatorCell.swift in Sources */,
 				3A5AFFFF25935D4800712F55 /* GameItemCodeTableViewCell.swift in Sources */,

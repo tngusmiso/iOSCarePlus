@@ -80,6 +80,12 @@ class GameListViewController: UIViewController {
 
 // MARK: - TableView Delegate
 extension GameListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let pageViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameDetailPageViewController") as? GameDetailPageViewController else { return }
+        
+        pageViewController.model = model?.contents[indexPath.row]
+        navigationController?.pushViewController(pageViewController, animated: true)
+    }
 }
 
 // MARK: - TableView DataSource
