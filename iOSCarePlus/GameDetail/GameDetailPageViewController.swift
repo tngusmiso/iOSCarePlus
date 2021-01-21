@@ -8,9 +8,12 @@
 
 import UIKit
 class GameDetailPageViewController: UIPageViewController {
+    
+    // MARK: - Private Variables
     var orderedViewControllers: [UIViewController]? = []
     var model: NewGameContents?
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +22,7 @@ class GameDetailPageViewController: UIPageViewController {
         guard let screenShots = model?.screenshots else { return }
         for screenShot in screenShots {
             guard let url = screenShot.images.first?.url else { return }
-            let imageViewController = getImageViewController(url: url)
+            let imageViewController: UIViewController = getImageViewController(url: url)
             orderedViewControllers?.append(imageViewController)
         }
         
@@ -28,12 +31,14 @@ class GameDetailPageViewController: UIPageViewController {
         }
     }
     
+    // MARK: - Private Functions
     private func getImageViewController(url: String) -> UIViewController {
         guard let imageViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameDetailImageViewController") as? GameDetailImageViewController else { return UIViewController() }
         imageViewController.url = url
         return imageViewController}
 }
 
+// MARK: - PageViewController DataSource
 extension GameDetailPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = orderedViewControllers?.firstIndex(of: viewController) else { return nil }

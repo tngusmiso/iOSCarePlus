@@ -88,7 +88,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1820.289855072464" y="10.714285714285714"/>
+            <point key="canvasLocation" x="-1878" y="141"/>
         </scene>
         <!--Navigation-->
         <scene sceneID="LPs-bU-9Vf">
@@ -287,7 +287,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLZ-00-Df9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-289.85507246376812" y="10.714285714285714"/>
+            <point key="canvasLocation" x="-1249" y="141"/>
+        </scene>
+        <!--Game Detail View Controller-->
+        <scene sceneID="nT1-WG-GWc">
+            <objects>
+                <viewController storyboardIdentifier="GameDetailViewController" id="HgW-29-Bp7" customClass="GameDetailViewController" customModule="iOSCarePlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ca7-vo-wej">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TwX-Uz-LJq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNM-eN-Bh0">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="UNM-eN-Bh0" secondAttribute="height" multiplier="1:1" id="Nl3-WP-8Fu"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="1Ud-Fg-cER" kind="embed" id="Luk-lA-L9y"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="UNM-eN-Bh0" firstAttribute="leading" secondItem="TwX-Uz-LJq" secondAttribute="leading" id="S1b-6l-C8d"/>
+                                    <constraint firstAttribute="trailing" secondItem="UNM-eN-Bh0" secondAttribute="trailing" id="iQI-Pr-sNg"/>
+                                    <constraint firstItem="UNM-eN-Bh0" firstAttribute="top" secondItem="TwX-Uz-LJq" secondAttribute="top" id="lyE-rv-Cbg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ACF-tX-75u"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ACF-tX-75u" firstAttribute="trailing" secondItem="TwX-Uz-LJq" secondAttribute="trailing" id="3b4-P0-X29"/>
+                            <constraint firstItem="ACF-tX-75u" firstAttribute="bottom" secondItem="TwX-Uz-LJq" secondAttribute="bottom" id="71K-F9-Iav"/>
+                            <constraint firstItem="TwX-Uz-LJq" firstAttribute="leading" secondItem="ACF-tX-75u" secondAttribute="leading" id="jA9-je-KTY"/>
+                            <constraint firstItem="TwX-Uz-LJq" firstAttribute="top" secondItem="ACF-tX-75u" secondAttribute="top" id="rG8-tW-m1X"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerViewController" destination="UNM-eN-Bh0" id="o1y-IL-tMb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uhc-DU-ZiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1249" y="806"/>
         </scene>
         <!--Game Detail Page View Controller-->
         <scene sceneID="1dl-2m-Ts5">
@@ -295,7 +341,7 @@
                 <pageViewController storyboardIdentifier="GameDetailPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1Ud-Fg-cER" customClass="GameDetailPageViewController" customModule="iOSCarePlus" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKL-Hh-Eol" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1200" y="659"/>
+            <point key="canvasLocation" x="-629" y="644"/>
         </scene>
         <!--Game Detail Image View Controller-->
         <scene sceneID="mPd-wQ-ymj">
@@ -305,7 +351,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-ub-i0T">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-ub-i0T">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
                         </subviews>
@@ -324,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcR-Te-swQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-548" y="659"/>
+            <point key="canvasLocation" x="-13" y="806"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="BEq-r7-Ych">
@@ -340,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csx-nH-om4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="328.98550724637681" y="10.714285714285714"/>
+            <point key="canvasLocation" x="9" y="141"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GEk-rk-plM">
@@ -378,7 +424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bqx-Z9-a3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="947.82608695652186" y="10.714285714285714"/>
+            <point key="canvasLocation" x="629" y="141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oYS-pY-Mvg">
@@ -397,7 +443,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fO9-dU-0yZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1200" y="10.714285714285714"/>
+            <point key="canvasLocation" x="-1191" y="-668"/>
         </scene>
     </scenes>
     <resources>

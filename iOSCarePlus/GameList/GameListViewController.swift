@@ -9,11 +9,33 @@ import Alamofire
 import UIKit
 
 class GameListViewController: UIViewController {
+    // MARK: - IBOutlet
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var newButton: SelectableButton!
     @IBOutlet private weak var saleButton: SelectableButton!
     @IBOutlet private weak var selectedLineConstraints: NSLayoutConstraint!
     
+    // MARK: - Private Variables
+    private var newGameListURL: String { // ComputedProperty - getter만 있고, 한줄로 표현 가능한 형태
+        "https://ec.nintendo.com/api/KR/ko/search/new?count=\(newCount)&offset=\(newOffset)"
+    }
+    private let newCount: Int = 10
+    private var newOffset: Int = 0
+    private var isEndOfData: Bool = false
+    private var model: NewGameResponse? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // tableView.register(GameItemCodeTableViewCell.self, forCellReuseIdentifier: "GameItemCodeTableViewCell")
+        callNewGameListAPI()
+    }
+    
+    // MARK: - IBAction
     @IBAction private func touchUpNewButton(_ sender: Any) {
         newButton.isSelected = true
         saleButton.isSelected = false
@@ -35,24 +57,7 @@ class GameListViewController: UIViewController {
         }
     }
     
-    private var newGameListURL: String { // ComputedProperty - getter만 있고, 한줄로 표현 가능한 형태
-        "https://ec.nintendo.com/api/KR/ko/search/new?count=\(newCount)&offset=\(newOffset)"
-    }
-    private let newCount: Int = 10
-    private var newOffset: Int = 0
-    private var isEndOfData: Bool = false
-    private var model: NewGameResponse? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // tableView.register(GameItemCodeTableViewCell.self, forCellReuseIdentifier: "GameItemCodeTableViewCell")
-        callNewGameListAPI()
-    }
-    
+    // MARK: - Private Functions
     private func isIndicatorCell(_ indexPath: IndexPath) -> Bool {
         indexPath.row == model?.contents.count
     }
@@ -81,10 +86,13 @@ class GameListViewController: UIViewController {
 // MARK: - TableView Delegate
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let pageViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameDetailPageViewController") as? GameDetailPageViewController else { return }
+//        guard let pageViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameDetailPageViewController") as? GameDetailPageViewController else { return }
+//        pageViewController.model = model?.contents[indexPath.row]
+//        navigationController?.pushViewController(pageViewController, animated: true)
+        guard let gameDetailViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameDetailViewController") as? GameDetailViewController else { return }
         
-        pageViewController.model = model?.contents[indexPath.row]
-        navigationController?.pushViewController(pageViewController, animated: true)
+        gameDetailViewController.model = model?.contents[indexPath.row]
+        navigationController?.pushViewController(gameDetailViewController, animated: true)
     }
 }
 
@@ -92,12 +100,10 @@ extension GameListViewController: UITableViewDelegate {
 extension GameListViewController: UITableViewDataSource {
     // 한 섹션에 몇개의 열을 보여줄 것인지
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 응답을 받기 전에
-        guard let model = model else {
+        guard let model = model else { // 응답을 받기 전에
             return 0
         }
-        // 더이상 데이터가 없을 때
-        if isEndOfData {
+        if isEndOfData { // 더이상 데이터가 없을 때
             return model.contents.count
         }
         // 데이터가 남아있을 때
