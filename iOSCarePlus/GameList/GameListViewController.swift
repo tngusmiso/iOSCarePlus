@@ -19,6 +19,9 @@ class GameListViewController: UIViewController {
     private var newGameListURL: String { // ComputedProperty - getter만 있고, 한줄로 표현 가능한 형태
         "https://ec.nintendo.com/api/KR/ko/search/new?count=\(newCount)&offset=\(newOffset)"
     }
+    private var saleGameListURL: String {
+        "https://ec.nintendo.com/api/KR/ko/search/sales?count=\(newCount)&offset=\(newOffset)"
+    }
     private let newCount: Int = 10
     private var newOffset: Int = 0
     private var isEndOfData: Bool = false
@@ -37,6 +40,8 @@ class GameListViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction private func touchUpNewButton(_ sender: Any) {
+        if newButton.isSelected { return }
+        
         newButton.isSelected = true
         saleButton.isSelected = false
         
@@ -44,9 +49,14 @@ class GameListViewController: UIViewController {
             self?.selectedLineConstraints.constant = 0
             self?.view.layoutIfNeeded()
         }
+        
+        resetModel()
+        callNewGameListAPI()
     }
     
     @IBAction private func touchUpSaleButton(_ sender: Any) {
+        if saleButton.isSelected { return }
+        
         newButton.isSelected = false
         saleButton.isSelected = true
         
@@ -55,6 +65,9 @@ class GameListViewController: UIViewController {
             self?.selectedLineConstraints.constant = constant
             self?.view.layoutIfNeeded()
         }
+        
+        resetModel()
+        callSaleGameListAPI()
     }
     
     // MARK: - Private Functions
@@ -62,9 +75,33 @@ class GameListViewController: UIViewController {
         indexPath.row == model?.contents.count
     }
     
+    private func resetModel() {
+        model = nil
+        newOffset = 0
+    }
+    
     private func callNewGameListAPI() {
         // get, parameter 등이 없는 채로 통신 요청
         AF.request(newGameListURL).responseJSON { [weak self] response in
+            guard let data = response.data else { return }
+            let decoder: JSONDecoder = JSONDecoder()
+            guard let responseModel: NewGameResponse = try? decoder.decode(NewGameResponse.self, from: data) else {
+                return
+            }
+            
+            if self?.model == nil {
+                self?.model = responseModel
+            } else {
+                if responseModel.contents.isEmpty {
+                    self?.isEndOfData = true
+                }
+                self?.model?.contents.append(contentsOf: responseModel.contents)
+            }
+        }
+    }
+    
+    private func callSaleGameListAPI() {
+        AF.request(saleGameListURL).responseJSON { [weak self] response in
             guard let data = response.data else { return }
             let decoder: JSONDecoder = JSONDecoder()
             guard let responseModel: NewGameResponse = try? decoder.decode(NewGameResponse.self, from: data) else {
