@@ -165,3 +165,100 @@ imageView.kf.setImage(with: url)
 
 ### references
 https://github.com/onevcat/Kingfisher
+
+---
+
+## 🌸 인증서
+* iOS 개발을 하기 위해서는 개발자 계정이 필요하다.
+* App Store에 앱을 배포하기 위해서는 개발자 계정이 필요하다.
+* 여러사람이 하나의 프로젝트에서 협업할 때, 인증서 공유가 필요하다.
+
+### 인증서 종류
+* 계정에 대한 인증서 : `.csr`, `.cer`, `.key`, `.p12`
+    * `.csr` 파일을 통해 `.cer` 파일을 만든다.
+    * `.cer` 파일에서 `.key` 파일이 자동으로 생성된다.
+    * `.key` 파일을 통해 `.p12` 파일을 내보내기할 수 있다.
+    * `.p12` 파일을 통해 `.cer` + `.key`가 조합된 파일을 얻을 수 있다.
+* 기기 정보 등의 다양한 정보를 포함 : `PP (Provisioning profile)`
+* 푸시 인증서 : `.p8`
+
+### 인증서가 필요한 이유
+* XCode에서 Target의 `Signing & Capabilities`를 보면 Team은 프로젝트를 생성한 사람의 계정으로 되어있고, Automatically에 체크가 되어있다. 그러면 한 대의 실 디바이스로만 테스트할 수 있다. 
+
+* 팀원 모두가 각자 폰에서 빌드를 하려면 2가지 방법이 있다.
+    1. 프로젝트에 팀원 모두의 계정을 등록해주기
+        * XCode > Preferences > Accounts
+        * 계정을 직접 공유하는 방식이기 때문에 그렇게 좋은 방법은 아님..
+    2. 인증서를 공유하기
+        * 원래는 Automatically에 체크가 되어있어서 자동으로 Provisioning Profile이 생성되는 것이다.
+        * 여러 대의 기기에서 빌드하고 싶으면 Automatically 체크를 해제하고, 인증서(`.p12`)와 Provisioning Profile(`.mobileprovision`)을 공유하는 방식으로 사용하면 된다.
+
+
+### Apple Developer 사이트  
+[이곳](https://developer.apple.com)에서 인증서를 발급하고, 관리할 수 있다.  
+* **Certificates**: 내 계정에 관한 인증서
+* **Identifiers**: 앱 번들 ID 등록
+* **Devices**: 개발용 디바이스 등록
+* **Profiles**: Certificates + Identifiers + Devices를 묶은 파일 
+
+
+### Certificates
+내 계정에 대한 인증서를 만드는 과정이다. 이 인증서를 가지고 있는 사람은 내가 인증한 사람이다 라는 뜻!
+1. `.cer` 파일 만들기
+    1. Certificates 제목 옆에 있는 `+` 버튼을 누른다
+    2. 종류를 선택해준다
+        * ✅ Apple Development ✅ : 개발용! XCode에서 디버그 상태에서 사용
+        * Apple Distribution : 앱스토어 업로드 용
+    3. `Signing Request`를 업로드 => `.csr` 파일 (Mac에서 생성)
+        1. Keychain Access(키체인 접근) > 인증서 지원 > 인증 기관에서 인증서 요청
+        2. 이메일 주소 적고 이름 적고 `계속`을 누른다.
+        3. `.certSigningRequest` 파일이 생성된다. 원하는 곳에 잘 저장해두기~
+        4. 저장한 파일을 올려주면 된다.
+    4. 개발 인증서 만들기 성공! 
+        1. Download 받으면 `.cer` 파일이 다운된다.
+        2. 다운로드 받은 `.cer` 파일을 더블클릭하면 **키체인**에 인증서가 등록된다.
+        3. 다운로드 받은 `.cer` 파일에서 **스페이스바**를 누르면 미리보기에 `Apple Development: <사용자명> (인증서일련번호)`를 확인할 수 있다.
+        4. 저 **인증서 일련번호**와 **키체인 이름**이 같아야 함!!
+2. `.key` 파일 => cer 파일과 key 파일까지 일치해야 인증에 성공할 수 있다.
+    1. Keychain Access(키체인 접근) > 인증서 탭 > 방금 만든 인증서의 토글 화살표를 누르면 `KEY`가 나온다.
+    2. 우클릭 > 내보내기 > 이름 별도저장 ("개발용인증서"와 같은 이름으로 변경해준다.) > 파일 포맷 지정 (`.p12`) > 암호는 넣어도, 안넣어도 된다.
+3.  `.p12` 파일을 공유하세요!
+    1. 공유받은 사람이 `.p12` 파일을 더블클릭, 암호를 넣으면 Mac에 자동으로 인증서가 등록됩니다.
+
+### Identifiers
+등록하면 다른 사람이 같은 Bundle ID의 앱을 등록할 수 없게 된다.
+1. `+` 버튼 클릭
+2. **App IDs** 선택
+3. **App** 선택
+4. **Description** 적어주기
+5. **Bundle ID / Explict**
+    - XCode 프로젝트에 적혀있는 Bundle ID를 넣어준다.
+6. **Capability** 추가
+    - 처음에 안해도 나중에 추가할 수 있다.
+    - 변경사항이 생기면 다시 `PP` 파일을 만들어야 하긴 함
+
+
+### Devices
+팀원이 여러명일 경우, 모든 기기들의 UDID를 다 등록해 주면 된다.
+1. `+` 누르기
+2. 플랫폼 선택 / 디바이스 이름 / UDID 등록
+    * **UDID 확인하는 법** : 핸드폰을 맥에 연결 > 기기 이름 아래의 상세정보를 클릭하다보면 일련번호와 **UDID**가 나타남!
+
+### Profile
+위에서 했던 과정을 모두 합쳐보자.
+1. **종류 선택** : (개발용) Development > iOS App Development 선택
+2. **App ID** : 위에서 만든 Identifiers를 선택
+3. **인증서 선택** : 아까 만든 인증서(`.p12`)를 선택하면 된다. (3개까지 가능)
+4. **기기 선택** : 등록한 팀원들 기기를 모두 선택해준다.
+5. **PP 파일 이름 등록**
+6. 다운로드 받으면 `.mobileprovision` 파일을 받을 수 있다.
+    * 이렇게 다운받은 파일을 클릭하면 자동으로 XCode에 들어간다!
+
+> PP 파일에 변경(Devices, Capability 등)이 생겼을 경우, Edit을 통해 수정하고 다시 다운로드 받아야 한다. 다운로드 받고 다시 클릭하는 것도 잊지 말자!
+
+### 팀원이 XCode에 등록하는 법
+* 인증서 `.p12` 파일과 PP `.mobileprovision` 파일을 공유받았다면, 두 파일 모두 더블클릭해서 실행만 시켜준다면 자동으로 등록된다.
+* XCode에서 `Automatically manage signing` 체크를 해제하고, `Provisioning Profile`을 잘 선택해준다.
+
+### references
+https://developer.apple.com
