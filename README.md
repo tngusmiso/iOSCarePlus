@@ -262,3 +262,61 @@ https://github.com/onevcat/Kingfisher
 
 ### references
 https://developer.apple.com
+
+---
+
+## 🌸 디버깅
+
+### Break Point 걸기
+* 해당 라인을 빌드하면 프로그램이 현재 상태를 유지하면서 잠시 멈춤
+![breakpoint](README/Image/breakpoint.png)
+* 디버그창의 왼쪽에는 **stack에 쌓여있는 데이터 값**을 볼 수 있고 오른쪽에는 **lldb 디버거**가 있다.
+
+### lldb
+* XCode 내장 디버거 (debugger)
+* 매번 빌드하기 힘들 때 테스트용으로 쓰면 편리함.
+* [명령어 모음](lldb.llvm.orf/lldb-gdb.html)
+    * `p`, `print` : 데이터 출력
+    * `po` : 객체화 시켜서 예쁘게 출력
+    * `e`, `expr` : stack의 값을 임시로 변경 (시뮬레이터에도 반영됨)
+    * `e let $` : $ 뒤에 오는 것을 이름으로 갖는 변수 선언 
+
+### Swift Flags
+
+* Debug 상태일 때, Release 상태일 때와 같이 Configuration을 구분해서 컴파일 할 코드를 분기할 수 있다.
+
+    ### Other Swift Flags
+    * Build Settings > All / Combined > Other Swift Flags
+    * 왼쪽에는 Configuration을, 오른쪽에는 코드에 사용될 키워드를 작성하고 앞에 -D를 붙여준다.
+    ![other_swift_flags.png](README/Image/other_swift_flags.png)
+    * 코드에서는 `#if <키워드>` ~ `#endif` 를 사용하여 분기할 수 있다.
+
+
+    ### Scheme
+    * Flag로 사용된 Debug, Release와 같은 Configuration에 따라 빌드 방식을 구분하는 방법이다.
+    * 일반적으로 Scheme에는 Run과 Archive, Test 등이 있고,  
+    `Run`의 Configuration은 **Debug**, `Archive`의 Configuration은 **Release**이다.
+
+    * XCode 상단에 있는 `▶️`(Run) 버튼 오른쪽에 있는 **타겟**을 클릭하고 `Edit Scheme...`을 클릭한다.
+    ![editscheme.png](README/Image/editscheme.png)
+
+    * Build Configuration을 살펴보면 Run은 Debug, Archive는 Release이다.
+    ![scheme_configuration.png](README/Image/scheme_configuration.png)
+
+    * `#if DEBUG` ~ `#endif` 부분의 코드는 Run으로 컴파일할 때 실행되지만, Archive로 컴파일할 때는 실행되지 않는다. 
+
+```
+import Foundation
+
+var sum = 0
+#if DEBUG
+for i in 0...10 {
+    sum += i
+}
+#endif
+
+print(sum)
+
+```
+> Debug :: 55 출력  
+> Release :: 0 출력
