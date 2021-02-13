@@ -16,7 +16,7 @@
 * 주로 백업 파일, 로그 파일, 로컬 설정 파일 등이 포함된다.
 * **XCode Swift 프로젝트에서는?** => *DS_Store, XCode Patch 관련, Dependency Manager 관련 등*
 * `.gitignore` 파일을 추가하기 전에 commit을 했다면?
-    ```
+    ```shell
     git rm -r --cached [파일명]
     ```
 
@@ -35,7 +35,7 @@
 * `Build Phases`로 이동
 * `+` 버튼 클릭
 * `New Run Script Phases` 클릭하여 아래의 코드 추가
-    ```
+    ```shell
     if which swiftlint >/dev/null; then
         swiftlint
     else
@@ -76,14 +76,14 @@
 
 ## 🌸 CocoaPods
 ### 설치
-```
+```shell
 sudo gem install cocoapods
 ````
 
 ### 사용 방법
 * `pod init`  
     > Podfile이 생성된다.
-    ```
+    ```podfile
     # Uncomment the next line to define a global platform for your project
     # platform :ios, '9.0'
     
@@ -94,7 +94,6 @@ sudo gem install cocoapods
         # Pods for test
 
     end
-
     ```
     > 생성된 `Podfile`에 원하는 라이브러리 의존성을 추가한다.
 
@@ -129,7 +128,7 @@ sudo gem install cocoapods
 ### request
 * **AF.request(**_: method: parameters: encoder: headers: interceptor:**)**
 * 사용 예시
-    ```
+    ```swift
     AF.request(url).responseJSON { response in
         guard let data: Data = response.data else { return }
         let decoder: JSONDecoder = JSONDecoder()
@@ -158,7 +157,7 @@ sudo gem install cocoapods
 * 따라서 이미지를 한번 받아올 때 캐시 메모리에 저장해두면 자동으로 캐시에서 삭제되기 전까지는 빠르게 처리할 수 있게 된다.
 
 ### 사용 방법
-```
+```swift
 let url: URL? = URL(string: "https://example.com/image.png")
 imageView.kf.setImage(with: url)
 ````
@@ -305,7 +304,7 @@ https://developer.apple.com
 
     * `#if DEBUG` ~ `#endif` 부분의 코드는 Run으로 컴파일할 때 실행되지만, Archive로 컴파일할 때는 실행되지 않는다. 
 
-```
+```swift
 import Foundation
 
 var sum = 0
